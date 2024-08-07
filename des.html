@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <style>
+        /* Global styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #E6E6FA;
+        }
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin-top: 2rem;
+            color: #660033;
+        }
+        /* Style scoreboard */
+        .scoreboard {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .scoreboard > div {
+            font-size: 2rem;
+            margin: 0 1rem;
+            padding: 0.5rem;
+            border: 2px solid #660033;
+            border-radius: 10px;
+            color: #660033;
+        }
+        /* Style choices */
+        .choices {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        .choice {
+            border: 2px solid #660033;
+            border-radius: 10px;
+            margin: 0 2rem;
+            padding: 2rem;
+            background-color: #FFFFFF;
+            transition: transform 0.2s ease-in-out;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .choice:hover {
+            transform: scale(1.1);
+        }
+        .choice:active {
+            transform: scale(0.9);
+        }
+        .choice i {
+            color: #660033;
+            font-size: 50px;
+        }
+        /* Style result */
+        .result {
+            text-align: center;
+            font-size: 2rem;
+            margin-top: 2rem;
+            color: #660033;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rock Paper Scissors</h1>
+    <div class="scoreboard">
+        <div>User: 0</div>
+        <div>Computer: 0</div>
+    </div>
+    <div class="choices">
+        <div class="choice"><i class="far fa-hand-rock"></i></div>
+        <div class="choice"><i class="far fa-hand-paper"></i></div>
+        <div class="choice"><i class="far fa-hand-scissors"></i></div>
+    </div>
+    <div class="result">Choose your move!</div>
+    <h2 id="result"></h2>
+
+    <script>
+        function play(userChoice) {
+            const choices = ['rock', 'paper', 'scissors'];
+            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+            let result = '';
+
+            if (userChoice === computerChoice) {
+                result = "It's a tie!";
+            } else if (
+                (userChoice === 'rock' && computerChoice === 'scissors') ||
+                (userChoice === 'paper' && computerChoice === 'rock') ||
+                (userChoice === 'scissors' && computerChoice === 'paper')
+            ) {
+                result = 'You win!';
+            } else {
+                result = 'You lose!';
+            }
+
+            document.getElementById('result').innerText = You chose ${userChoice}, computer chose ${computerChoice}. ${result};
+        }
+    </script>
+</body>
+</html>
